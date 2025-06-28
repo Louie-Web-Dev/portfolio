@@ -125,9 +125,211 @@
 | **Copy Line Up/Down**                     | `Shift + Alt + ↑ / ↓`                   |
 | **Surround with Brackets/Quotes**         | `Shift + Alt + Right` (on some configs) |
 
+| Feature      | PHP Syntax                                  |
+| ------------ | ------------------------------------------- |
+| `for` loop   | `for ($i = 0; $i < 5; $i++) { ... }`        |
+| `while` loop | `while ($j < 5) { ... }`                    |
+| Function     | `function name($param) { return ...; }`     |
+| Class        | `class Name { ... function __construct() }` |
+| Object       | `$obj = new ClassName();`                   |
+| Print        | `echo "text";`                              |
+
+<!-- php -->
+<?php
+$name = "Christian";
+echo "Hello, World!<br>";
+
+if ($name === "Christian") {
+    echo "Welcome!";
+}
+?>
+
+<!-- javascript -->
+let name = "Christian";
+console.log("Hello, World!");
+
+if (name === "Christian") {
+    console.log("Welcome!");
+}
 
 
 
+<!-- php -->
+<!-- Loops (for and while) -->
+<?php
+for ($i = 0; $i < 5; $i++) {
+    echo $i . "<br>";
+}
+
+$j = 0;
+while ($j < 5) {
+    echo $j . "<br>";
+    $j++;
+}
+?>
+
+<!-- Functions -->
+<?php
+function greet($name) {
+    return "Hello, " . $name;
+}
+
+echo greet("Christian");
+?>
+
+<!-- Classes & Objects -->
+<?php
+class Person {
+    public $name;
+
+    function __construct($name) {
+        $this->name = $name;
+    }
+
+    function greet() {
+        echo "Hello, " . $this->name;
+    }
+}
+
+<!-- php syntax : $variable_name = value; -->
+$user = new Person("Christian");
+$user->greet();
+?>
+
+<?php
+    $language="PHP";
+    $Language="WEIRD PHP";
+    echo $language;
+    ECHO $Language;
+?>
+
+<!-- PHP starter -->
+
+<?php
+// This is a comment
+echo "Hello, World!";
+?>
+
+<!-- Variable -->
+$name = "John";
+$age = 25;
+$price = 10.50;
+
+% DATA TYPES
+String: "Hello"
+
+Integer: 10
+
+Float: 10.5
+
+Boolean: true / false
+
+Array: ["apple", "banana"]
+
+Null: null
+
+% Conditional Statement
+
+if ($age >= 18) {
+    echo "Adult";
+} else {
+    echo "Minor";
+}
+
+<!-- Loops -->
+// For loop
+for ($i = 1; $i <= 5; $i++) {
+    echo $i;
+}
+
+// While loop
+$counter = 1;
+while ($counter <= 5) {
+    echo $counter++;
+}
+
+<!-- Function -->
+function greet($name) {
+    return "Hello, $name!";
+}
+echo greet("Anna");
+
+<!-- Array -->
+$fruits = ["Apple", "Banana", "Orange"];
+echo $fruits[1]; // Banana
+
+// Associative Array
+$user = ["name" => "John", "age" => 25];
+echo $user["name"];
+
+<!-- Form handling(POST) -->
+// form.html
+<form method="POST" action="submit.php">
+  <input type="text" name="username">
+  <input type="submit">
+</form>
+
+// submit.php
+<?php
+$username = $_POST['username'];
+echo "Hello, $username!";
+?>
+
+<!-- Common problem -->
+| Problem                     | Reason                                 |
+| --------------------------- | -------------------------------------- |
+| `Undefined variable`        | Variable not declared before use       |
+| `Undefined index`           | Accessing array key that doesn’t exist |
+| `Parse error`               | Missing `;`, `{}`, or `)`              |
+| `Headers already sent`      | Output sent before using `header()`    |
+| `500 Internal Server Error` | Usually syntax error in PHP file       |
+| `Cannot modify header`      | `echo` before `header()` causes this   |
+
+
+<!-- Database MYSQLi -->
+
+<?php
+$hostName   = "localhost";
+$dbUser     = "root";
+$dbPassword = "";
+$dbName     = "test_db";
+
+//create connection
+$conn = new mysqli($hostName, $dbUser, $dbPassword, $dbName);
+
+//check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+?>
+
+
+<!-- ----------------------------------- -->
+
+<!-- Object-Oriented Style -->
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+➤ Uses: new mysqli()
+➤ Error check: $conn->connect_error
+➤ Best for: Large/modern projects, OOP code
+➤ Reusable & organized
+
+<!-- Procedural Style -->
+
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+➤ Uses: mysqli_connect()
+➤ Error check: !$conn or mysqli_connect_error()
+➤ Best for: Small scripts, beginners
+➤ Quick and simple
 
 
 
