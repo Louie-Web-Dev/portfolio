@@ -1,4 +1,6 @@
+git config --global user.name "Louie-Web-Dev"
 
+git config --global user.email "chrstnmrn27@gmail.com"
 <!DOCTYPE html>
 <html lang="en">
 <head>
