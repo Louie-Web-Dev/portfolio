@@ -38,10 +38,8 @@
 </html>
 
 <?php
-    echo $_GET['username'];
-    echo $_GET['password'];
-
-
+    echo "{$_GET['username']} <br>";
+    echo "{$_GET['password']}<br>";
 
 // if ($_SERVER["REQUEST_METHOD"] == "GET") {
 //     // Collect data from the form
@@ -55,3 +53,4 @@
 //     echo "No data submitted.";
 // }
 ?>
+
