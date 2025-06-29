@@ -370,3 +370,108 @@ You can plug that directly into PHP like this:
 $sql = "SELECT * FROM users WHERE username = 'admin'";
 Then just run it with PHP code.
 
+% cdddrmo sample
+<?php
+require_once "save.php"; // Connect to MySQL (you must have $conn defined in save.php)
+
+$sql = "SELECT * FROM incidents ORDER BY id DESC"; // SQL command
+$result = mysqli_query($conn, $sql); // Run the query and store result in $result
+
+?>
+
+
+;
+<!-- sas -->
+
+CREATE TABLE users (
+    user_id INT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    email VARCHAR(100) UNIQUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+<!-- ---- -->
+
+CREATE TABLE users (
+    user_id INT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    email VARCHAR(100),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+<?php
+$conn = new mysqli("localhost", "root", "", "your_db");
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $username = $_POST["username"];
+    $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
+    $email = $_POST["email"];
+
+    $sql = "INSERT INTO users (username, password, email) 
+            VALUES ('$username', '$password', '$email')";
+
+    if ($conn->query($sql)) {
+        echo "Registration successful. <a href='login.php'>Login here</a>";
+    } else {
+        echo "Error: " . $conn->error;
+    }
+}
+?>
+
+<!-- Registration Form -->
+<form method="POST">
+  <input type="text" name="username" placeholder="Username" required><br>
+  <input type="password" name="password" placeholder="Password" required><br>
+  <input type="email" name="email" placeholder="Email"><br>
+  <button type="submit">Register</button>
+</form>
+
+<!-- -- -->
+<?php
+session_start();
+$conn = new mysqli("localhost", "root", "", "your_db");
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+
+    $sql = "SELECT * FROM users WHERE username = '$username'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows === 1) {
+        $row = $result->fetch_assoc();
+
+        if (password_verify($password, $row["password"])) {
+            $_SESSION["user_id"] = $row["user_id"];
+            $_SESSION["username"] = $row["username"];
+            header("Location: dashboard.php");
+            exit();
+        } else {
+            echo "Invalid password.";
+        }
+    } else {
+        echo "User not found.";
+    }
+}
+?>
+
+<!-- Login Form -->
+<form method="POST">
+  <input type="text" name="username" placeholder="Username" required><br>
+  <input type="password" name="password" placeholder="Password" required><br>
+  <button type="submit">Login</button>
+</form>
+
+project/
+│
+├── config/
+│   └── database.php
+│
+├── public/
+│   └── index.php
+
+// index.php
+require_once "../config/database.php";
