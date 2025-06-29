@@ -12,6 +12,25 @@
 
 </body>
 </html>
+CREATE TABLE students (
+    student_id INT PRIMARY KEY AUTO_INCREMENT,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    birth_date DATE,
+    email VARCHAR(100) UNIQUE,
+    enrolled_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY AUTO_INCREMENT,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    position VARCHAR(100),
+    department VARCHAR(100),
+    salary DECIMAL(10, 2),
+    hire_date DATE,
+    email VARCHAR(100) UNIQUE
+);
 
 *{
     margin: 0;
