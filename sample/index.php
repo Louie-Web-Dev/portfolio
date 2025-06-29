@@ -26,6 +26,9 @@
 require_once 'database.php'; 
 
      echo "Database connection successful!<br>";
+    
+     // String values
+    // text values
     $name = "John";
     $location = "New York"; 
     $email = "sample@gmail.com";
