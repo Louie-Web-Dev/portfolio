@@ -9,13 +9,26 @@
 </head>
 <body>
     <form action="salary.php" method="post">
-    <label>username:</label><br>
-    <input type="text" name="salary">
+    <label>Hours Worked</label><br>
+    <input type="text" name="hours_worked">
     <input type="submit" value="Submit"><br>
     </form>
 </body>
 </html>
-<?php   
-    $name = "John";
+<?php 
 
-    $totasalary = $_POST['salary'];
+    $salary_perhour = 5.5;
+    $hours_worked = 0;
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["hours_worked"])) { //checking to make sure the form was submitted
+    
+    $hours_worked = $_POST["hours_worked"];
+    $total_salary = $salary_perhour * $hours_worked;
+
+    echo"you worked for $hours_worked hours<br>";
+    echo "Total Salary is: \${$total_salary}<br>";
+
+    } else {
+        echo "Please enter the hours worked.";
+    }
+?>
