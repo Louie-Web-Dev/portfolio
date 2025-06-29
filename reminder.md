@@ -353,5 +353,20 @@ if (!$conn) {
 ➤ Best for: Small scripts, beginners
 ➤ Quick and simple
 
+PHP: PHP Hypertext Preprocessor
+HTML: Hypertext Markup Language
+SQL: Structured query language
+RDBMS: Relational Database Management System
 
+<!-- If you know how to write SQL like this: -->
+
+<!-- sql -->
+
+SELECT * FROM users WHERE username = 'admin';
+You can plug that directly into PHP like this:
+
+<!-- php -->
+
+$sql = "SELECT * FROM users WHERE username = 'admin'";
+Then just run it with PHP code.
 
