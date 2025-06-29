@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <form action="get_post.php" method="get">
+    <form action="get.php" method="get">
     <label>username:</label>
     <input type="text" name="username" id="username">
     <label>password:</label>
