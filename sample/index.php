@@ -22,6 +22,9 @@
 </html> -->
 
 <?php 
+
+require_once 'database.php'; // Assuming database.php is in the sample folder
+    
     $name = "John";
     $age = 30;
     $email = "sample@gmail.com";
@@ -30,4 +33,5 @@
     echo "Name: $name<br>";
     echo "Age: $age<br>"; 
     echo "Email: $email<br>";
+    echo "Database connection successful!<br>";
 ?>
