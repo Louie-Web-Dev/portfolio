@@ -14,8 +14,8 @@
 </html>
 CREATE TABLE students (
     student_id INT PRIMARY KEY AUTO_INCREMENT,
-    first_name VARCHAR(50),
-    last_name VARCHAR(50),
+    first_name VARCHAR(50)  NOT NULL,
+    last_name VARCHAR(50)  NOT NULL,
     birth_date DATE,
     email VARCHAR(100) UNIQUE,
     enrolled_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -25,12 +25,15 @@ CREATE TABLE employees (
     employee_id INT PRIMARY KEY AUTO_INCREMENT,
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
+    birthday DATE,
     position VARCHAR(100),
     department VARCHAR(100),
+    location VARCHAR(100),
     salary DECIMAL(10, 2),
-    hire_date DATE,
+    hire_date DATE, 
     email VARCHAR(100) UNIQUE
 );
+
 
 *{
     margin: 0;
